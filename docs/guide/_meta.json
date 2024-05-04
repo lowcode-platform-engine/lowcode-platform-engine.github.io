@@ -1,1 +1,25 @@
-["index", "demo"]
+[
+  "index",
+  "demo",
+  {
+    "type": "dir",
+    "name": "framework",
+    "label": "设计原理",
+    "collapsible": true,
+    "collapsed": false
+  },
+  {
+    "type": "dir",
+    "name": "appendix",
+    "label": "附录",
+    "collapsible": true,
+    "collapsed": false
+  },
+  {
+    "type": "dir",
+    "name": "openapi",
+    "label": "三方接入",
+    "collapsible": true,
+    "collapsed": false
+  }
+]
