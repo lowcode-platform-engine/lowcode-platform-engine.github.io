@@ -5,12 +5,11 @@
     "activeMatch": "/guide/"
   },
   {
-    "text": "Hello World",
-    "link": "/hello/",
-    "activeMatch": "/hello/"
+    "text": "在线体验",
+    "link": "https://static-cdn.ry-ltd.site/lowcode-center-web/#/"
   },
   {
-    "text": "API",
-    "link": "https://rspress.dev/api/index.html"
+    "text": "Github",
+    "link": "https://github.com/wu-component/lowcode-set-up-platform"
   }
 ]
