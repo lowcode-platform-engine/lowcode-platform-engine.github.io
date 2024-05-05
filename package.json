@@ -5,13 +5,20 @@
   "scripts": {
     "dev": "rspress dev",
     "build": "rspress build",
-    "preview": "rspress preview"
+    "preview": "rspress preview",
+    "build:site": "ts-node-transpile-only ./build/build.ts"
   },
   "dependencies": {
-    "antd": "^5.17.0",
-    "rspress": "1.19.1"
+    "@rspress/plugin-preview": "^1.19.1",
+    "antd": "^5.17.0"
   },
   "devDependencies": {
-    "@types/node": "^16"
+    "@types/node": "^16",
+    "adm-zip": "^0.5.12",
+    "axios": "^1.6.8",
+    "form-data": "^4.0.0",
+    "rspress": "1.19.1",
+    "shelljs": "^0.8.5",
+    "ts-node": "^10.9.2"
   }
 }

@@ -4,11 +4,15 @@ import { defineConfig } from 'rspress/config';
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
   title: '低代码搭建引擎',
+  base: '/lowcode-platform-docs/',
   description: '低代码搭建引擎',
   icon: '/icon-logo.svg',
   logo: {
     light: '/icon-light-logo.svg',
     dark: '/icon-dark-logo.svg',
+  },
+  builderConfig: {
+
   },
   themeConfig: {
     socialLinks: [
@@ -16,6 +20,7 @@ export default defineConfig({
     ],
     prevPageText: '上一页',
     nextPageText: '下一页',
+    enableScrollToTop: true,
   },
   // 配置 CSS 选择器，自定义要放大的图片，默认为 '.rspress-doc img'
   mediumZoom: {

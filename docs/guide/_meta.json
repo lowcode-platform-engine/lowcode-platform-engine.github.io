@@ -3,6 +3,13 @@
   "demo",
   {
     "type": "dir",
+    "name": "use",
+    "label": "物料扩展",
+    "collapsible": true,
+    "collapsed": false
+  },
+  {
+    "type": "dir",
     "name": "framework",
     "label": "设计原理",
     "collapsible": true,
