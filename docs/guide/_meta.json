@@ -3,6 +3,13 @@
   "demo",
   {
     "type": "dir",
+    "name": "operation",
+    "label": "操作手册",
+    "collapsible": true,
+    "collapsed": false
+  },
+  {
+    "type": "dir",
     "name": "use",
     "label": "物料扩展",
     "collapsible": true,
