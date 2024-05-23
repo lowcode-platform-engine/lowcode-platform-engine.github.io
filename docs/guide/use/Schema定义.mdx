@@ -1,0 +1,410 @@
+# Schema定义
+## 常见配置
+
+### Input
+
+#### 效果
+
+
+import {Input} from "./schemaComponent/Input";
+
+<Input />
+
+#### 示例配置
+
+import { Tab, Tabs } from 'rspress/theme';
+
+<Tabs>
+    <Tab label="写法1">
+    ```ts title=IProps.d.ts
+    /**
+    * test-component
+    * @Component TestComponent
+    * @title 输入框
+    */
+    export default interface TestComponentProps {
+        /**
+         * 文字
+         *
+         * @title 文字
+         * @type string
+         * @min 1
+         * @max 10
+         * @format text
+         * @placeholder 请输入
+         * @default ''
+         */
+        text: string;
+    }
+        ```
+
+
+
+    </Tab>
+    <Tab label="写法2">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component TestComponent
+        * @title 输入框
+        */
+        export default interface TestComponentProps {
+            /**
+             * 文字
+             *
+             * @title 文字
+             * @type string
+             * @min 1
+             * @max 10
+             * @widget input
+             * @placeholder 请输入
+             * @default ''
+             */
+            text: string;
+        }
+        ```
+
+
+
+    </Tab>
+</Tabs>
+
+
+### InputNumber
+
+#### 效果
+
+import {InputNumber} from "./schemaComponent/InputNumber";
+
+<InputNumber />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component TestComponent
+        * @title 数字输入框
+        */
+        export default interface TestComponentProps {
+            /**
+             * 数字
+             *
+             * @title 数字
+             * @type string
+             * @min 1
+             * @max 10
+             * @format number
+             * @placeholder 请输入
+             * @default 2
+             */
+            num: number;
+        }
+        ```
+
+
+
+    </Tab>
+    <Tab label="写法2">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component TestComponent
+        * @title 数字输入框
+        */
+        export default interface TestComponentProps {
+            /**
+             * 数字
+             *
+             * @title 数字
+             * @type string
+             * @min 1
+             * @max 10
+             * @widget input
+             * @placeholder 请输入
+             * @default 2
+             */
+            num: number;
+        }
+        ```
+
+
+
+    </Tab>
+</Tabs>
+
+### ColorPicker
+
+#### 效果
+
+import {ColorPicker} from "./schemaComponent/ColorPicker";
+
+<ColorPicker />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component  TestComponent
+        * @title 颜色选择器
+        */
+        export default interface TestComponentProps {
+            /**
+             * 颜色
+             *
+             * @title 颜色
+             * @type string
+             * @format color
+             * @default #470c0c
+             */
+            color: string;
+        }
+        ```
+
+
+
+    </Tab>
+    <Tab label="写法2">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component  TestComponent
+        * @title 颜色选择器
+        */
+        export default interface TestComponentProps {
+            /**
+             * 颜色
+             *
+             * @title 颜色
+             * @type string
+             * @default #470c0c
+             * @widget color
+             */
+            color: string;
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### Select
+
+#### 效果
+
+import {Select} from "./schemaComponent/Select";
+
+<Select />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        enum TestSelectValue {
+            test1 = '1',
+            test2 = '2',
+            test3 = '3',
+        }
+        /**
+        * test-component
+        * @Component  TestComponent
+        * @title 下拉选择单选
+        */
+        export default interface TestComponentProps {
+            /**
+             * 下拉选择单选
+             *
+             * @title 下拉选择单选
+             * @type string
+             * @default '1'
+             */
+            selectVal: TestSelectValue;
+        }
+        ```
+
+
+
+    </Tab>
+    <Tab label="写法2">
+        ```ts title=IProps.d.ts
+        enum TestSelectValue {
+            test1 = '1',
+            test2 = '2',
+            test3 = '3',
+        }
+        /**
+        * test-component
+        * @Component  TestComponent
+        * @title 下拉选择单选
+        */
+        export default interface TestComponentProps {
+            /**
+             * 下拉选择单选
+             *
+             * @title 下拉选择单选
+             * @type string
+             * @default '1'
+             */
+            selectVal: TestSelectValue;
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### CheckBox
+
+#### 效果
+
+import {Boolean} from "./schemaComponent/Boolean";
+
+<Boolean />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component TestComponent
+        * @title 是否通过
+        */
+        export default interface TestComponentProps {
+            /**
+             * 是否通过
+             *
+             * @title 是否通过
+             * @type boolean
+             * @default true
+             */
+            boolValue?: boolean
+        }
+        ```
+
+
+
+    </Tab>
+</Tabs>
+
+### 对象数组
+
+#### 效果
+
+import {ObjectArray} from "./schemaComponent/ObjectArray";
+
+<ObjectArray />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        interface TestArr {
+            /**
+             * 名称
+             *
+             * @title 测试对象名称
+             * @type string
+             * @default 测试
+             */
+            name: string
+        }
+
+
+        /**
+        * test-component
+        * @Component TestComponent
+        * @title 对象数组组件
+        */
+        export default interface TestComponentProps {
+            /**
+             * 测试集合
+             *
+             * @title 测试集合
+             * @type array
+             * @default []
+             */
+            testArr?: TestArr[]
+        }
+        ```
+
+    </Tab>
+</Tabs>
+
+
+
+## 配置选项
+
+### 常用注解选项
+
+#### type
+
+* 描述：表单字段的类型
+* 类型：```string | number | boolean | array | range | html | block```
+
+#### title
+
+* 描述：表单字段的标签
+* 类型：```string```
+
+#### placeholder
+
+* 描述：输入内容提示
+* 类型：```string | [string, string]```
+
+#### description
+
+* 描述：副标题描述
+* 类型：```string```
+
+#### min
+
+* 描述：string 类型为字符串最小长度；number 类型时为最小值；array 类型时为数组最小长度
+* 类型：number
+
+#### max
+
+*  描述：string 类型为字符串最大长度；number 类型时为最大值；array 类型时为数组最大长度
+*  类型：number
+
+#### format
+
+*  描述：在已设置的 type 下，如何处理这个 type
+*  类型：'image' | 'textarea' | 'color' | 'email' | 'url' | 'dateTime' | 'date' | 'time' | 'upload'
+
+:::tip
+
+会根据 type 和 format 自动选择适合的 widget。但更推荐显式的指定 widget，而不是自动选择。
+
+:::
+
+### 其他注解选项
+
+#### tooltip
+
+* 描述：气泡提示
+* 类型：```string```
+
+#### descWidget
+
+* 描述：自定义副标题提示组件
+* 类型：```string```
+
+#### required
+
+* 描述：是否必填
+* 类型：```boolean```
+
+#### props
+
+*  描述：其他属性，object 属性转换成 string
+*  类型：string
+
+
+
+
+

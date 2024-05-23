@@ -170,5 +170,5 @@ export default defineConfig({
 
 该文件是物料的类型定义文件,物料的 Schema 通过该文件中定义的 TypeScript 类型结合注释来生成，该文件会自动创建，开发者可根据需求自定义组件 Schema。
 
-1. [物料类型定义](/guide/use/schema) 
+1. [物料类型定义](/guide/use/Schema定义) 
 2. [TS类型转Schema设计原理](/guide/framework/type-to-ast) 
