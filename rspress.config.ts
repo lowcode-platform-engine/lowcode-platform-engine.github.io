@@ -1,5 +1,7 @@
 import * as path from 'path';
 import { defineConfig } from 'rspress/config';
+import alignImage from 'rspress-plugin-align-image';
+// import toc from 'rspress-plugin-toc';
 
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
@@ -26,4 +28,11 @@ export default defineConfig({
   mediumZoom: {
     selector: '.lowcode-doc img',
   },
+  plugins: [
+    alignImage(),
+    /*toc({
+      useOfficialComponent: false,
+      maxDepth: 3
+    }),*/
+  ],
 });

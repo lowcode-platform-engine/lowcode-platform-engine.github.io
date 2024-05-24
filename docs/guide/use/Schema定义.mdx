@@ -1,7 +1,7 @@
 # Schema定义
 ## 常见配置
 
-### Input
+### Input 字符输入
 
 #### 效果
 
@@ -70,7 +70,7 @@ import { Tab, Tabs } from 'rspress/theme';
 </Tabs>
 
 
-### InputNumber
+### NumberInput 数字输入
 
 #### 效果
 
@@ -103,9 +103,6 @@ import {InputNumber} from "./schemaComponent/InputNumber";
             num: number;
         }
         ```
-
-
-
     </Tab>
     <Tab label="写法2">
         ```ts title=IProps.d.ts
@@ -129,13 +126,10 @@ import {InputNumber} from "./schemaComponent/InputNumber";
             num: number;
         }
         ```
-
-
-
     </Tab>
 </Tabs>
 
-### ColorPicker
+### ColorPicker 颜色选择
 
 #### 效果
 
@@ -191,7 +185,153 @@ import {ColorPicker} from "./schemaComponent/ColorPicker";
     </Tab>
 </Tabs>
 
-### Select
+### DatePicker 日期选择
+
+#### 效果
+
+import {DatePicker} from "./schemaComponent/DatePicker";
+
+<DatePicker />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component  TestComponent
+        * @title 日期选择器
+        */
+        export default interface TestComponentProps {
+            /**
+             * 日期选择
+             *
+             * @title 日期选择
+             * @type string
+             * @format date
+             * @default 2024-05-09
+             */
+            date?: string;
+        }
+        ```
+    </Tab>
+    <Tab label="写法2">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component  TestComponent
+        * @title 日期选择器
+        */
+        export default interface TestComponentProps {
+            /**
+             * 日期选择
+             *
+             * @title 日期选择
+             * @type string
+             * @widget datePicker
+             * @default 2024-05-09
+             */
+            date1?: string;
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### TimePicker 时间选择
+
+#### 效果
+
+import {TimePicker} from "./schemaComponent/DatePicker";
+
+<TimePicker />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component  TestComponent
+        * @title 时间选择器
+        */
+        export default interface TestComponentProps {
+            /**
+             * 时间选择
+             *
+             * @title 时间选择
+             * @type string
+             * @format time
+             * @default 12:23:23
+             */
+            time?: string;
+
+        }
+        ```
+    </Tab>
+    <Tab label="写法2">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component  TestComponent
+        * @title 时间选择器
+        */
+        export default interface TestComponentProps {
+            /**
+             * 时间选择
+             *
+             * @title 时间选择
+             * @type string
+             * @widget timePicker
+             * @default 12:23:23
+             */
+            time1?: string;
+        }
+        ```
+    </Tab>
+</Tabs>
+
+
+### DateTimePicker 日期时间选择
+
+#### 效果
+
+import {DateTimePicker} from "./schemaComponent/DatePicker";
+
+<DateTimePicker />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component  TestComponent
+        * @title 日期时间选择器
+        */
+        export default interface TestComponentProps {
+            /**
+             * 日期时间选择
+             *
+             * @title 日期时间选择
+             * @type string
+             * @format dateTime
+             * @default 2022-04-23 12:34:23
+             */
+            dateTime?: string;
+
+        }
+        ```
+    </Tab>
+</Tabs>
+
+
+
+
+
+### Select 下拉单选
 
 #### 效果
 
@@ -229,33 +369,42 @@ import {Select} from "./schemaComponent/Select";
 
 
     </Tab>
-    <Tab label="写法2">
+</Tabs>
+
+### Switch 开关
+
+#### 效果
+
+import {SwitchCom} from "./schemaComponent/Boolean";
+
+<SwitchCom />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
         ```ts title=IProps.d.ts
-        enum TestSelectValue {
-            test1 = '1',
-            test2 = '2',
-            test3 = '3',
-        }
         /**
         * test-component
-        * @Component  TestComponent
-        * @title 下拉选择单选
+        * @Component TestComponent
+        * @title 是否通过
         */
         export default interface TestComponentProps {
             /**
-             * 下拉选择单选
+             * 是否通过
              *
-             * @title 下拉选择单选
-             * @type string
-             * @default '1'
+             * @title 是否通过
+             * @type boolean
+             * @widget switch
+             * @default true
              */
-            selectVal: TestSelectValue;
+            boolValue?: boolean
         }
         ```
     </Tab>
 </Tabs>
 
-### CheckBox
+### CheckBox 复选框
 
 #### 效果
 
@@ -284,13 +433,64 @@ import {Boolean} from "./schemaComponent/Boolean";
             boolValue?: boolean
         }
         ```
+    </Tab>
+</Tabs>
 
 
+### Object 对象
+
+#### 效果
+
+import {ObjectCom} from "./schemaComponent/Object";
+
+<ObjectCom />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component TestComponent
+        * @title 对象组件
+        */
+        export default interface TestComponentProps {
+            /**
+             * 对象配置
+             *
+             * @title 对象配置案例
+             * @type object
+             */
+            objValue?: ObjectValue
+        }
+
+        interface ObjectValue {
+            /**
+             * 年龄
+             *
+             * @title 年龄
+             * @min 0
+             * @max 100
+             * @type number
+             */
+            age: number;
+
+            /**
+             * 名称
+             *
+             * @title 图片格式
+             * @type string
+             * @format image
+             */
+            formatImage: string;
+        }
+        ```
 
     </Tab>
 </Tabs>
 
-### 对象数组
+### Object-Array 对象数组
 
 #### 效果
 
@@ -334,7 +534,6 @@ import {ObjectArray} from "./schemaComponent/ObjectArray";
 
     </Tab>
 </Tabs>
-
 
 
 ## 配置选项
