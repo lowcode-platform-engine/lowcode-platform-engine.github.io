@@ -27,3 +27,4 @@ export default defineConfig({
     selector: '.lowcode-doc img',
   },
 });
+// marvin  ubuntu marvin 123Asd123Aad   192.168.3.26/24
