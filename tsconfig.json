@@ -3,5 +3,6 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "resolveJsonModule": true
-  }
+  },
+  "exclude": ["docs/public/playground/index.umd.js"]
 }

@@ -13,8 +13,44 @@ export default defineConfig({
     light: '/icon-light-logo.svg',
     dark: '/icon-dark-logo.svg',
   },
+  route: {
+    exclude: ['public/**'],
+  },
   builderConfig: {
-
+    html: {
+      tags: [
+        {
+          tag: 'script',
+          attrs: {
+            src: '/common/react.production.min.js',
+          },
+          append: true,
+        },
+        {
+          tag: 'script',
+          attrs: {
+            src: '/common/react-dom.production.min.js',
+          },
+          append: true,
+        },
+        /*{
+          tag: 'script',
+          attrs: {
+            src: '/playground/index.umd.js',
+          },
+          append: true,
+        },
+        {
+          tag: 'link',
+          attrs: {
+            href: '/playground/style.css',
+            rel: 'stylesheet',
+          },
+          append: true,
+        },*/
+        // https://unpkg.com/react@17.0.2/umd/react.development.js
+      ],
+    },
   },
   themeConfig: {
     socialLinks: [
@@ -29,6 +65,7 @@ export default defineConfig({
     selector: '.lowcode-doc img',
   },
   plugins: [
+    // @ts-ignore
     alignImage(),
     /*toc({
       useOfficialComponent: false,
