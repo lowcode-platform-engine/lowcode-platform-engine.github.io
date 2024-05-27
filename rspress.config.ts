@@ -29,6 +29,7 @@ export default defineConfig({
     selector: '.lowcode-doc img',
   },
   plugins: [
+    // @ts-ignore
     alignImage(),
     /*toc({
       useOfficialComponent: false,
