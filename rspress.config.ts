@@ -2,7 +2,7 @@ import * as path from 'path';
 import { defineConfig } from 'rspress/config';
 import alignImage from 'rspress-plugin-align-image';
 // import toc from 'rspress-plugin-toc';
-
+console.log(process.env.NODE_ENV)
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
   title: '低代码搭建引擎',
@@ -73,3 +73,4 @@ export default defineConfig({
     }),*/
   ],
 });
+// marvin  ubuntu marvin 123Asd123Aad   192.168.3.26/24

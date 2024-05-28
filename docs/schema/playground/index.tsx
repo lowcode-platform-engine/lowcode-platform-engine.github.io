@@ -2,6 +2,18 @@ import { Spin } from 'antd';
 import './index.scss'
 import {useEffect, useMemo, useState} from "react";
 import {LoadService} from "./LoadService";
+const staticMAp = {
+  js: '/playground/index.umd.js',
+  css: '/playground/style.css'
+}
+
+const staticMAp1 = {
+  js: '/lowcode-platform-docs/playground/index.umd.js',
+  css: '/lowcode-platform-docs/playground/style.css'
+}
+const isDev = true;
+const file = isDev? staticMAp: staticMAp1
+
 export default() => {
 
   const [loading, setLoading] = useState(true);
@@ -13,10 +25,10 @@ export default() => {
         const loadService = new LoadService({
           enableSandbox: true
         })
-        const res = await loadService.importScript('/playground/index.umd.js');
+        const res = await loadService.importScript(file.js);
         console.log(res);
         if (!document.querySelector('#playgroundStyle')) {
-          const style = await loadService.importStyle('/playground/style.css');
+          const style = await loadService.importStyle(file.css);
           console.log(style);
           style.id='playgroundStyle'
           document.querySelector('body').appendChild(style);
