@@ -6,6 +6,10 @@
   left: 0;
   top: 72px;
   overflow: hidden;
+  #playgroundView {
+    height: 100%;
+    width: 100%;
+  }
 }
 .loading {
   display: flex;

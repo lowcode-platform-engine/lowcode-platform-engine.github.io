@@ -1,4 +1,7 @@
 # Schema定义
+
+Schema 用于描述物料的属性，平台支持用 TypeScript 的 interface 直接定义，更加符合开发者的编码习惯。物料在编译阶段会自动将 interface 文件通过 Ast 转成成Schema，其中成员属性会解析成配置属性，成员属性的注释会解析成对应的 Props。以下列举了一些常见的示例。
+
 ## 常见配置
 
 ### Input 字符输入

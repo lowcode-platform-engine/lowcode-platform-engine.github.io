@@ -50,7 +50,9 @@ export default() => {
   const initPlayground = () => {
     const {ReactDOM, React, SchemaOnLinePlayground} = window as any
 
-    ReactDOM.createRoot(document.getElementById('playgroundView')!).render(React.createElement(SchemaOnLinePlayground.SchemaPreviewOnline))
+    ReactDOM.createRoot(document.getElementById('playgroundView')!).render(React.createElement(SchemaOnLinePlayground.SchemaPreviewOnline, {
+      height: 'calc(100vh - 72px)'
+    }))
   }
 
   const mounted = useMemo(() => {
@@ -70,6 +72,10 @@ export default() => {
     return  <Spin className={'loading'} spinning={true} />
   }
   return (
-    <div className={'playgroundView'} id={'playgroundView'}></div>
+    <div className={'playgroundView'} >
+      <div id={'playgroundView'}>
+
+      </div>
+    </div>
   )
 }
