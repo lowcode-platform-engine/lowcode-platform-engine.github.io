@@ -201,8 +201,9 @@ enum TestSelectValue {
 }
 `
 const isDev = true;
-const file = isDev? staticMAp: staticMAp1
-
+const isDEV = () => {
+  return location.host.includes('localhost') ||  location.host.includes('127.0.0.1')
+}
 export default() => {
 
   const [loading, setLoading] = useState(true);
@@ -211,6 +212,7 @@ export default() => {
   useEffect(() => {
     (async () => {
       try {
+        const file = isDEV()? staticMAp: staticMAp1
         const loadService = new LoadService({
           enableSandbox: true
         })
