@@ -1,18 +1,15 @@
-import {FormSchemaRender, useForm} from "./FormSchemaRender";
+import {FormSchemaRender} from "./FormSchemaRender";
 
 export const ColorPicker  = () => {
-  const form = useForm();
   return (
     <FormSchemaRender
-      style={{width: 540}}
-      displayType={'row'}
-      labelAlign={'right'}
-      labelWidth={100}
-      column={1}
+      initialValues={{
+        color: '#470c0c'
+      }}
       schema={{
         type: 'object',
         properties: {
-          num: {
+          color: {
             title: '颜色',
             type: 'string',
             format: 'color',
@@ -20,7 +17,7 @@ export const ColorPicker  = () => {
           },
         }
       }}
-      footer={false} form={form} />
+      />
   )
 }
 

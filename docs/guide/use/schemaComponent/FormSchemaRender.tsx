@@ -121,6 +121,18 @@ function formSchema(schema: Record<any, any>): any[] {
           }
         })
       }
+      else if (format === 'image') {
+        resultSchema.push({
+          componentName: "ImageSetter",
+          props: {
+            ...reset,
+            formItemProps: {
+              ...commonFormItemProps
+            },
+            setter: 'ImageSetter'
+          }
+        })
+      }
       else {
         resultSchema.push({
           componentName: "StringSetter",
@@ -265,6 +277,7 @@ const isDEV = () => {
 export const FormSchemaRender = (props: any = {}) => {
   const [id, setId] = useState(generateRandomEightCharString());
   const schema  = props.schema || {};
+  const initialValues  = props.initialValues || {};
   const [form] = Form.useForm();
   const newSchema = formSchema(schema);
   console.log(newSchema)
@@ -307,7 +320,7 @@ export const FormSchemaRender = (props: any = {}) => {
     ReactDOM.createRoot(document.getElementById(id)!).render(React.createElement(SetterRender.default, {
       form: form,
       schema: newSchema,
-      initialValues: {},
+      initialValues: initialValues,
       onChange: (values: Record<any, any>) => {
         console.log(values)
       }

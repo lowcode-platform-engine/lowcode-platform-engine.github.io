@@ -1,14 +1,8 @@
-import {FormSchemaRender, useForm} from "./FormSchemaRender";
+import {FormSchemaRender} from "./FormSchemaRender";
 
 export const ObjectCom  = () => {
-  const form = useForm();
   return (
     <FormSchemaRender
-      style={{width: 540}}
-      displayType={'row'}
-      labelAlign={'right'}
-      labelWidth={100}
-      column={1}
       schema={{
         type: 'object',
         properties: {
@@ -31,7 +25,7 @@ export const ObjectCom  = () => {
           }
         }
       }}
-      footer={false} form={form} />
+      />
   )
 }
 

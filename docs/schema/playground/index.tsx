@@ -27,6 +27,67 @@ export default interface CommonHeaderIProps {
    * @default 测试
    */
   name?: string;
+  
+  /**
+   * 复选框
+   *
+   * @title 复选框
+   * @type string
+   * @widget checkbox
+   * @default ['1']
+   */
+  checkbox?: TestSelectValue[];
+  
+  
+  /**
+   * 图片选择
+   *
+   * @title 图片选择
+   * @type string
+   * @format image
+   * @default https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg
+   */
+  image?: string
+
+  /**
+   * 日期选择器
+   *
+   * @title 日期选择器
+   * @type string
+   * @format date
+   * @default 2021-03-23
+   */
+  date?: string;
+
+  /**
+   * 时间选择器
+   *
+   * @title 时间选择器
+   * @type string
+   * @format time
+   * @default 12:23:24
+   */
+  time?: string;
+
+  /**
+   * 日期时间选择器
+   *
+   * @title 日期时间选择器
+   * @type string
+   * @format dateTime
+   * @default 2021-03-23 12:23:24
+   */
+  dateTime?: string;
+
+  /**
+   * 颜色
+   *
+   * @title 颜色
+   * @type string
+   * @format color
+   * @default #000000
+   */
+  color?: string;
 
   /**
    * 年龄
@@ -39,41 +100,13 @@ export default interface CommonHeaderIProps {
   age?: number;
 
   /**
-   * 名称
+   * 开关
    *
-   * @title 测试图片格式
-   * @type string
-   * @format image
+   * @title 开关
+   * @type boolean
+   * @default true
    */
-  formatImage?: string;
-
-  /**
-   * 测试对象
-   *
-   * @title 测试对象
-   * @type object
-   * @default {}
-   */
-  testObj?: TestObj
-
-
-  /**
-   * 测试集合
-   *
-   * @title 测试集合
-   * @type array
-   * @default []
-   */
-  testArr?: TestArr[]
-
-  /**
-   * 对象配置
-   *
-   * @title 对象配置案例
-   * @type object
-   */
-  objValue?: ObjectValue
-
+  switch: boolean;
 
   /**
    * 下拉选择
@@ -81,123 +114,79 @@ export default interface CommonHeaderIProps {
    * @title 下拉选择单选
    * @type string
    */
-  selectVal?: TestSelectValue
+  selectVal?: TestSelectValue;
 
   /**
-   * 是否通过
+   * 下拉多选择
    *
-   * @title 是否通过
-   * @type boolean
-   * @default true
-   */
-  boolValue?: boolean
-
-  /**
-   * 日期选择
-   *
-   * @title 日期选择
-   * @type string
-   * @format date
-   * @default 2024-05-09
-   */
-  date?: string;
-
-  /**
-   * 日期选择
-   *
-   * @title 日期选择
-   * @type string
-   * @widget datePicker
-   * @default 2024-05-09
-   */
-  date1?: string;
-
-  /**
-   * 时间选择
-   *
-   * @title 时间选择
-   * @type string
-   * @format time
-   * @default 12:23:23
-   */
-  time?: string;
-
-  /**
-   * 时间选择
-   *
-   * @title 时间选择
-   * @type string
-   * @widget timePicker
-   * @default 12:23:23
-   */
-  time1?: string;
-
-  /**
-   * 日期时间选择
-   *
-   * @title 日期时间选择
-   * @type string
-   * @format dateTime
-   * @default 2022-04-23 12:34:23
-   */
-  dateTime?: string;
-
-}
-interface TestObj {
-  /**
-   * 名称
-   *
-   * @title 测试对象名称
-   * @type string
-   * @default 测试
-   */
-  name: string;
-
-  /**
-   * 名称
-   *
-   * @title 测试对象描述
+   * @title 下拉选多择单选
    * @type string
    */
-  desc: string;
+  selectMulVal?: TestSelectValue[];
 
-}
-interface TestArr {
-  /**
-   * 名称
-   *
-   * @title 测试对象名称
-   * @type string
-   * @default 测试
-   */
-  name: string
-}
-export interface ObjectValue {
-  /**
-   * 年龄
-   *
-   * @title 年龄
-   * @min 0
-   * @max 100
-   * @type number
-   */
-  age: number;
 
   /**
-   * 名称
+   * 对象配置
    *
-   * @title 图片格式
+   * @title 测试对象配置
    * @type string
-   * @format image
    */
-  formatImage: string;
+  objVal?: TestObj;
+
+  /**
+   * 对象集合配置
+   *
+   * @title 对象集合配置
+   * @minItems 1
+   * @maxItems 3
+   * @type string
+   */
+  arrayObjVal?: TestObj[];
 }
 
-
+// @ts-ignore
 enum TestSelectValue {
   test1 = '1',
   test2 = '2',
   test3 = '3',
+}
+interface Age {
+
+  /**
+   * 年龄
+   *
+   * @title 年龄
+   * @minimum 0
+   * @maximum 100
+   * @type number
+   */
+  age?: number;
+}
+
+
+/**
+ * 测试字段
+ * @title 测试字段
+ */
+interface TestObj {
+  /**
+   * 名称
+   *
+   * @title 名称
+   * @type string
+   * @default 测试
+   */
+  name?: string;
+
+  /**
+   * 日期选择器
+   *
+   * @title 日期选择器
+   * @type string
+   * @format date
+   * @default 2021-03-23
+   */
+  date?: string;
 }
 `
 const isDev = true;

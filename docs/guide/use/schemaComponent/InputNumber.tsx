@@ -1,14 +1,9 @@
-import {FormSchemaRender, useForm} from "./FormSchemaRender";
+import {FormSchemaRender} from "./FormSchemaRender";
 
 export const InputNumber  = () => {
-  const form = useForm();
   return (
     <FormSchemaRender
-      style={{width: 540}}
-      displayType={'row'}
-      labelAlign={'right'}
-      labelWidth={100}
-      column={1}
+      initialValues={{num: 2}}
       schema={{
         type: 'object',
         properties: {
@@ -23,7 +18,7 @@ export const InputNumber  = () => {
           },
         }
       }}
-      footer={false} form={form} />
+    />
   )
 }
 

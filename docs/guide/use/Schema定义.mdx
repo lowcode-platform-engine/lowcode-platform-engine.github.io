@@ -4,10 +4,9 @@ Schema 用于描述物料的属性，平台支持用 TypeScript 的 interface �
 
 ## 常见配置
 
-### Input 字符输入
+### StringSetter
 
 #### 效果
-
 
 import {Input} from "./schemaComponent/Input";
 
@@ -31,8 +30,7 @@ import { Tab, Tabs } from 'rspress/theme';
          *
          * @title 文字
          * @type string
-         * @min 1
-         * @max 10
+         * @maxLength 10
          * @format text
          * @placeholder 请输入
          * @default ''
@@ -40,11 +38,21 @@ import { Tab, Tabs } from 'rspress/theme';
         text: string;
     }
         ```
-
-
-
     </Tab>
-    <Tab label="写法2">
+</Tabs>
+
+### ImageSetter
+
+#### 效果
+
+import {Image} from "./schemaComponent/Image";
+
+<Image />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
         ```ts title=IProps.d.ts
         /**
         * test-component
@@ -52,28 +60,22 @@ import { Tab, Tabs } from 'rspress/theme';
         * @title 输入框
         */
         export default interface TestComponentProps {
-            /**
-             * 文字
-             *
-             * @title 文字
-             * @type string
-             * @min 1
-             * @max 10
-             * @widget input
-             * @placeholder 请输入
-             * @default ''
-             */
-            text: string;
-        }
+        /**
+         * 图片选择
+         *
+         * @title 图片选择
+         * @type string
+         * @format image
+         * @default https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg
+         */
+        image?: string
+    }
         ```
-
-
-
     </Tab>
 </Tabs>
 
 
-### NumberInput 数字输入
+### NumberSetter
 
 #### 效果
 
@@ -96,7 +98,7 @@ import {InputNumber} from "./schemaComponent/InputNumber";
              * 数字
              *
              * @title 数字
-             * @type string
+             * @type number
              * @min 1
              * @max 10
              * @format number
@@ -107,32 +109,9 @@ import {InputNumber} from "./schemaComponent/InputNumber";
         }
         ```
     </Tab>
-    <Tab label="写法2">
-        ```ts title=IProps.d.ts
-        /**
-        * test-component
-        * @Component TestComponent
-        * @title 数字输入框
-        */
-        export default interface TestComponentProps {
-            /**
-             * 数字
-             *
-             * @title 数字
-             * @type string
-             * @min 1
-             * @max 10
-             * @widget input
-             * @placeholder 请输入
-             * @default 2
-             */
-            num: number;
-        }
-        ```
-    </Tab>
 </Tabs>
 
-### ColorPicker 颜色选择
+### ColorSetter
 
 #### 效果
 
@@ -166,29 +145,10 @@ import {ColorPicker} from "./schemaComponent/ColorPicker";
 
 
     </Tab>
-    <Tab label="写法2">
-        ```ts title=IProps.d.ts
-        /**
-        * test-component
-        * @Component  TestComponent
-        * @title 颜色选择器
-        */
-        export default interface TestComponentProps {
-            /**
-             * 颜色
-             *
-             * @title 颜色
-             * @type string
-             * @default #470c0c
-             * @widget color
-             */
-            color: string;
-        }
-        ```
-    </Tab>
+
 </Tabs>
 
-### DatePicker 日期选择
+### DateSetter
 
 #### 效果
 
@@ -219,29 +179,9 @@ import {DatePicker} from "./schemaComponent/DatePicker";
         }
         ```
     </Tab>
-    <Tab label="写法2">
-        ```ts title=IProps.d.ts
-        /**
-        * test-component
-        * @Component  TestComponent
-        * @title 日期选择器
-        */
-        export default interface TestComponentProps {
-            /**
-             * 日期选择
-             *
-             * @title 日期选择
-             * @type string
-             * @widget datePicker
-             * @default 2024-05-09
-             */
-            date1?: string;
-        }
-        ```
-    </Tab>
 </Tabs>
 
-### TimePicker 时间选择
+### TimeSetter
 
 #### 效果
 
@@ -273,30 +213,10 @@ import {TimePicker} from "./schemaComponent/DatePicker";
         }
         ```
     </Tab>
-    <Tab label="写法2">
-        ```ts title=IProps.d.ts
-        /**
-        * test-component
-        * @Component  TestComponent
-        * @title 时间选择器
-        */
-        export default interface TestComponentProps {
-            /**
-             * 时间选择
-             *
-             * @title 时间选择
-             * @type string
-             * @widget timePicker
-             * @default 12:23:23
-             */
-            time1?: string;
-        }
-        ```
-    </Tab>
 </Tabs>
 
 
-### DateTimePicker 日期时间选择
+### DateTimeSetter
 
 #### 效果
 
@@ -332,15 +252,13 @@ import {DateTimePicker} from "./schemaComponent/DatePicker";
 
 
 
-
-
-### Select 下拉单选
+### SingleSelectSetter
 
 #### 效果
 
-import {Select} from "./schemaComponent/Select";
+import {SingleSelectSetter} from "./schemaComponent/Select";
 
-<Select />
+<SingleSelectSetter />
 
 #### 示例配置
 
@@ -355,13 +273,13 @@ import {Select} from "./schemaComponent/Select";
         /**
         * test-component
         * @Component  TestComponent
-        * @title 下拉选择单选
+        * @title 下拉单选
         */
         export default interface TestComponentProps {
             /**
-             * 下拉选择单选
+             * 下拉单选
              *
-             * @title 下拉选择单选
+             * @title 下拉单选
              * @type string
              * @default '1'
              */
@@ -369,12 +287,49 @@ import {Select} from "./schemaComponent/Select";
         }
         ```
 
-
-
     </Tab>
 </Tabs>
 
-### Switch 开关
+
+### MultipleSelectSetter
+
+#### 效果
+
+import {MultipleSelectSetter} from "./schemaComponent/Select";
+
+<MultipleSelectSetter />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        enum TestSelectValue {
+            test1 = '1',
+            test2 = '2',
+            test3 = '3',
+    }
+        /**
+        * test-component
+        * @Component  TestComponent
+        * @title 下拉多选
+        */
+        export default interface TestComponentProps {
+        /**
+         * 下拉选择多选
+         *
+         * @title 下拉多选
+         * @type string
+         * @default ['1']
+         */
+        selectVal: TestSelectValue[];
+    }
+        ```
+    </Tab>
+</Tabs>
+
+
+### BooleanSetter
 
 #### 效果
 
@@ -398,7 +353,6 @@ import {SwitchCom} from "./schemaComponent/Boolean";
              *
              * @title 是否通过
              * @type boolean
-             * @widget switch
              * @default true
              */
             boolValue?: boolean
@@ -407,40 +361,47 @@ import {SwitchCom} from "./schemaComponent/Boolean";
     </Tab>
 </Tabs>
 
-### CheckBox 复选框
+### CheckBoxSetter
 
 #### 效果
 
-import {Boolean} from "./schemaComponent/Boolean";
+import {CheckBox} from "./schemaComponent/Boolean";
 
-<Boolean />
+<CheckBox />
 
 #### 示例配置
 
 <Tabs>
     <Tab label="写法1">
         ```ts title=IProps.d.ts
+        enum TestSelectValue {
+            test1 = '1',
+            test2 = '2',
+            test3 = '3',
+    }
         /**
         * test-component
         * @Component TestComponent
-        * @title 是否通过
+        * @title 复选框
         */
         export default interface TestComponentProps {
             /**
-             * 是否通过
+             * 复选框
              *
-             * @title 是否通过
-             * @type boolean
-             * @default true
+             * @title 复选框
+             * @type string
+             * @widget checkbox
+             * @wegit string
+             * @default ['1']
              */
-            boolValue?: boolean
+            boolValue?: TestSelectValue[]
         }
         ```
     </Tab>
 </Tabs>
 
 
-### Object 对象
+### ObjectSetter
 
 #### 效果
 
@@ -493,7 +454,7 @@ import {ObjectCom} from "./schemaComponent/Object";
     </Tab>
 </Tabs>
 
-### Object-Array 对象数组
+### ArrayObjectSetter
 
 #### 效果
 
@@ -565,18 +526,33 @@ import {ObjectArray} from "./schemaComponent/ObjectArray";
 
 #### min
 
-* 描述：string 类型为字符串最小长度；number 类型时为最小值；array 类型时为数组最小长度
+* 描述：NumberSetter 类型时为最小值；
 * 类型：number
 
 #### max
 
-*  描述：string 类型为字符串最大长度；number 类型时为最大值；array 类型时为数组最大长度
+*  描述：NumberSetter 类型时为最大值；
+*  类型：number
+
+#### min
+
+* 描述：NumberSetter 类型时为最小值；
+* 类型：number
+
+#### maxItems
+
+*  描述：ArrayObjectSetter、ArraySetter 类型时最大的长度；
+*  类型：number
+
+#### minItems
+
+*  描述：ArrayObjectSetter、ArraySetter 类型时最小的长度；
 *  类型：number
 
 #### format
 
 *  描述：在已设置的 type 下，如何处理这个 type
-*  类型：'image' | 'textarea' | 'color' | 'email' | 'url' | 'dateTime' | 'date' | 'time' | 'upload'
+*  类型：'image' | 'text' | 'dateTime' | 'date' | 'time' | 'file' | 'color'
 
 :::tip
 

@@ -4,11 +4,13 @@ export const ObjectArray  = () => {
   const form = useForm();
   return (
     <FormSchemaRender
-      style={{width: 620}}
-      displayType={'row'}
-      labelAlign={'right'}
-      labelWidth={100}
-      column={1}
+      initialValues={{
+        testArr: [
+          {
+            name: '测试'
+          }
+        ]
+      }}
       schema={{
         type: 'object',
         properties: {

@@ -1,54 +1,56 @@
 import {FormSchemaRender, useForm} from "./FormSchemaRender";
 
-export const Boolean  = () => {
-  const form = useForm();
+export const CheckBox  = () => {
   return (
     <FormSchemaRender
-      style={{width: 540}}
-      displayType={'row'}
-      labelAlign={'right'}
-      labelWidth={100}
-      column={1}
+      initialValues={{val: ['1']}}
       schema={{
         type: 'object',
         properties: {
-          selectVal: {
-            "title": "是否通过",
-            default: true,
-            "type": "boolean"
+          val: {
+            "title": "复选框",
+            "type": "array",
+            "widget": "checkbox",
+            "items": {
+              "type": "string",
+              "enum": [
+                "1",
+                "2",
+                "3"
+              ],
+              "enumNames": [
+                "test1",
+                "test2",
+                "test3"
+              ]
+            }
           },
         }
       }}
-      footer={false} form={form} />
+     />
   )
 }
 
 
 export const SwitchCom  = () => {
-  const form = useForm();
   return (
     <FormSchemaRender
-      style={{width: 540}}
-      displayType={'row'}
-      labelAlign={'right'}
-      labelWidth={100}
-      column={1}
+      initialValues={{ boolValue: true}}
       schema={{
         type: 'object',
         properties: {
-          selectVal: {
+          boolValue: {
             "title": "是否通过",
             default: true,
-            widget: 'switch',
             "type": "boolean"
           },
         }
       }}
-      footer={false} form={form} />
+      />
   )
 }
 
 export default {
-  Boolean,
+  CheckBox,
   SwitchCom
 }
