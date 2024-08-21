@@ -33,3 +33,7 @@ export const Select  = () => {
       footer={false} form={form} />
   )
 }
+
+export default {
+  Select
+}

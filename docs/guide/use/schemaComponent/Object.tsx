@@ -34,3 +34,7 @@ export const ObjectCom  = () => {
       footer={false} form={form} />
   )
 }
+
+export default {
+  ObjectCom
+}

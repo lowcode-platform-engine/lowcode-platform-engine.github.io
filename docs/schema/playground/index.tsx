@@ -1,7 +1,7 @@
 import { Spin } from 'antd';
 import './index.scss'
 import {useEffect, useMemo, useState} from "react";
-import {LoadService} from "./LoadService";
+import {LoadService} from "../../utils/LoadService";
 const staticMAp = {
   js: '/playground/index.umd.js',
   css: '/playground/style.css'

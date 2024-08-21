@@ -23,3 +23,7 @@ export const ColorPicker  = () => {
       footer={false} form={form} />
   )
 }
+
+export default {
+  ColorPicker
+}

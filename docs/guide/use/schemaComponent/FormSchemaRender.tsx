@@ -1,5 +1,18 @@
-import FormRender, { connectForm, useForm } from 'form-render';
-import {Form} from "antd";
+import {Form, Spin} from "antd";
+import {useEffect, useMemo, useState} from "react";
+import {LoadService} from "../../../utils/LoadService";
+import './index.scss'
+
+
+const staticMAp = {
+  js: '/setter-render/index.umd.js',
+  css: '/setter-render/style.css'
+}
+
+const staticMAp1 = {
+  js: '/lowcode-platform-docs/setter-render/index.umd.js',
+  css: '/lowcode-platform-docs/setter-render/style.css'
+}
 
 function formSchema(schema: Record<any, any>): any[] {
   // @ts-ignore
@@ -235,35 +248,99 @@ function formSchema(schema: Record<any, any>): any[] {
 }
 
 
+function generateRandomEightCharString() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let randomString = '';
+  for (let i = 0; i < 8; i++) {
+    randomString += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return randomString;
+}
 
-export {
-  connectForm, useForm
+
+const isDEV = () => {
+  return location.host.includes('localhost') ||  location.host.includes('127.0.0.1')
 }
 
 export const FormSchemaRender = (props: any = {}) => {
+  const [id, setId] = useState(generateRandomEightCharString());
   const schema  = props.schema || {};
   const [form] = Form.useForm();
   const newSchema = formSchema(schema);
   console.log(newSchema)
 
-  const Render = (window as any)?.SchemaSetter?.SetterRender;
-  if (!Render) {
-    return <></>
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const file = isDEV()? staticMAp: staticMAp1
+        const loadService = new LoadService({
+          enableSandbox: true
+        })
+        const res = await loadService.importScript(file.js);
+        console.log(res);
+        if (!document.querySelector('#setterRenderStyle')) {
+          const style = await loadService.importStyle(file.css);
+          console.log(style);
+          style.id='setterRenderStyle'
+          document.querySelector('body').appendChild(style);
+        }
+
+        console.log(window)
+
+      }catch (e) {
+        setError(e)
+        console.log(e)
+      }
+
+      setLoading(false);
+    })()
+
+  }, []);
+
+
+  const initRender = () => {
+    const {ReactDOM, React, SetterRender} = window as any
+
+    ReactDOM.createRoot(document.getElementById(id)!).render(React.createElement(SetterRender.default, {
+      form: form,
+      schema: newSchema,
+      initialValues: {},
+      onChange: (values: Record<any, any>) => {
+        console.log(values)
+      }
+
+    }))
+  }
+
+  const mounted = useMemo(() => {
+    return !loading && !error
+  }, [loading, error])
+
+  useEffect(() => {
+    if (mounted) {
+      setTimeout(() => {
+        initRender()
+      })
+    }
+  }, [mounted]);
+
+  if (!mounted) {
+    return  <Spin className={'loading'} spinning={true} />
   }
 
   return (
-    <Render
-      form={form}
-      schema={schema}
-      initialValues={{}}
-      onChange={(values: Record<any, any>) => {
-        console.log('form values', values)
-      }}
+    <div id={id} className={'exampleItem'}>
 
-    ></Render>
+    </div>
   )
 }
 
+export const useForm = Form.useForm;
+
 export default {
-  FormSchemaRender: FormSchemaRender
+  FormSchemaRender,
+  useForm
 }

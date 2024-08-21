@@ -47,3 +47,8 @@ export const SwitchCom  = () => {
       footer={false} form={form} />
   )
 }
+
+export default {
+  Boolean,
+  SwitchCom
+}

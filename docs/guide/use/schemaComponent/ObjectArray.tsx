@@ -31,3 +31,7 @@ export const ObjectArray  = () => {
       footer={false} form={form} />
   )
 }
+
+export default {
+  ObjectArray
+}

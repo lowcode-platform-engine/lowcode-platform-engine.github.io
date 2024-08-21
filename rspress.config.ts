@@ -19,35 +19,35 @@ export default defineConfig({
   builderConfig: {
     html: {
       tags: [
-        /*{
+        {
           tag: 'script',
           attrs: {
             src: '/common/react.production.min.js',
           },
           append: true,
-        },*/
-       /* {
+        },
+        {
           tag: 'script',
           attrs: {
             src: '/common/react-dom.production.min.js',
           },
           append: true,
-        },*/
-        {
+        },
+        /*{
           tag: 'script',
           attrs: {
-            src: '/render-core/index.umd.js',
+            src: '/setter-render/index.umd.js',
           },
           append: true,
         },
         {
           tag: 'link',
           attrs: {
-            href: '/render-core/style.css',
+            href: '/setter-render/style.css',
             rel: 'stylesheet',
           },
           append: true,
-        },
+        },*/
         /*{
           tag: 'script',
           attrs: {

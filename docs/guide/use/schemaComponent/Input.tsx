@@ -25,3 +25,7 @@ export const Input  = () => {
       footer={false} form={form} />
   )
 }
+
+export default {
+  Input
+}

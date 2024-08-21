@@ -71,3 +71,9 @@ export const DateTimePicker  = () => {
       footer={false} form={form} />
   )
 }
+
+export default {
+  DatePicker,
+  TimePicker,
+  DateTimePicker
+}
