@@ -3,10 +3,11 @@ import { defineConfig } from 'rspress/config';
 import alignImage from 'rspress-plugin-align-image';
 // import toc from 'rspress-plugin-toc';
 console.log(process.env.NODE_ENV)
+console.log(process.env)
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
   title: '低代码搭建引擎',
-  base: '/lowcode-platform-docs/',
+  base: '/',
   description: '低代码搭建引擎',
   icon: '/icon-logo.svg',
   logo: {
