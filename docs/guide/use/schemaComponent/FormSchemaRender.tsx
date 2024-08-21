@@ -10,8 +10,8 @@ const staticMAp = {
 }
 
 const staticMAp1 = {
-  js: '/lowcode-platform-docs/setter-render/index.umd.js',
-  css: '/lowcode-platform-docs/setter-render/style.css'
+  js: './setter-render/index.umd.js',
+  css: './setter-render/style.css'
 }
 
 function formSchema(schema: Record<any, any>): any[] {

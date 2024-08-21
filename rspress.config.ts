@@ -3,7 +3,8 @@ import { defineConfig } from 'rspress/config';
 import alignImage from 'rspress-plugin-align-image';
 // import toc from 'rspress-plugin-toc';
 console.log(process.env.NODE_ENV)
-console.log(process.env)
+console.log(process.env.VERCEL_ENV)
+const base = process.env.VERCEL_ENV? '/': '/lowcode-platform-docs/'
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
   title: '低代码搭建引擎',
