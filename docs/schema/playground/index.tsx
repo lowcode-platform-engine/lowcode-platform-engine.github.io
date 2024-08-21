@@ -8,8 +8,8 @@ const staticMAp = {
 }
 
 const staticMAp1 = {
-  js: './playground/index.umd.js',
-  css: './playground/style.css'
+  js: '/playground/index.umd.js',
+  css: '/playground/style.css'
 }
 
 const defaultSchema = `
