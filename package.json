@@ -6,6 +6,7 @@
     "dev": "rspress dev",
     "build": "rspress build",
     "preview": "rspress preview",
+    "previewa": "./sss.sh",
     "build:site": "ts-node-transpile-only ./build/build.ts"
   },
   "dependencies": {
