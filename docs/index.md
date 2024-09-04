@@ -9,7 +9,7 @@ hero:
       link: /guide/
     - theme: alt
       text: Github
-      link: https://github.com/wu-component/lowcode-set-up-platform
+      link: https://github.com/orgs/lowcode-platform-engine/repositories
   image:
     src: /icon-logo.svg
     alt: 低代码搭建引擎 Logo
