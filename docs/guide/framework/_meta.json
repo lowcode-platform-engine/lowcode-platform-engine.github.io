@@ -3,10 +3,8 @@
   "canvas",
   "editor",
   "sandbox",
-  "material",
+  "type-to-ast",
   "CLI自动化",
-  "page",
   "preview",
-  "publish",
-  "type-to-ast"
+  "publish"
 ]

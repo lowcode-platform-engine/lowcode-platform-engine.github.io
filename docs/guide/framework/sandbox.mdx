@@ -16,7 +16,6 @@ import { Badge } from '@theme';
 
 ## 其他方案
 ### Proxy Sandbox
-
 可以通过代理 Proxy 实现对象的劫持，通过 window 对象的修改进行记录，在卸载时删除这些记录，在应用再次激活时恢复这些记录，来达到模拟沙箱环境的目的。
 
 ```ts

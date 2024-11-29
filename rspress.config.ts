@@ -76,6 +76,8 @@ export default defineConfig({
     prevPageText: '上一页',
     nextPageText: '下一页',
     enableScrollToTop: true,
+    enableContentAnimation: true,
+    enableAppearanceAnimation: true,
   },
   // 配置 CSS 选择器，自定义要放大的图片，默认为 '.rspress-doc img'
   mediumZoom: {
