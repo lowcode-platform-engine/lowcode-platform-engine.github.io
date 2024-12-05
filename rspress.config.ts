@@ -1,10 +1,12 @@
 import * as path from 'path';
 import { defineConfig } from 'rspress/config';
 import alignImage from 'rspress-plugin-align-image';
+import {pluginPreview} from "@rspress/plugin-preview";
 // import toc from 'rspress-plugin-toc';
 console.log(process.env.NODE_ENV)
 console.log(process.env.VERCEL_ENV)
 const base = process.env.VERCEL_ENV? '/': '/lowcode-platform-docs/'
+// @ts-ignore
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
   title: '低代码搭建引擎',
@@ -76,8 +78,8 @@ export default defineConfig({
     prevPageText: '上一页',
     nextPageText: '下一页',
     enableScrollToTop: true,
-    enableContentAnimation: true,
-    enableAppearanceAnimation: true,
+    // enableContentAnimation: true,
+    // enableAppearanceAnimation: true,
   },
   // 配置 CSS 选择器，自定义要放大的图片，默认为 '.rspress-doc img'
   mediumZoom: {
@@ -86,6 +88,8 @@ export default defineConfig({
   plugins: [
     // @ts-ignore
     alignImage(),
+    // @ts-ignore
+    pluginPreview(),
     /*toc({
       useOfficialComponent: false,
       maxDepth: 3

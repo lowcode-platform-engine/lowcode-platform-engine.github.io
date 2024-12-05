@@ -3,13 +3,13 @@ import './index.scss'
 import {useEffect, useMemo, useState} from "react";
 import {LoadService} from "../../utils/LoadService";
 const staticMAp = {
-  js: '/playground/index.umd.js',
-  css: '/playground/style.css'
+  js: '/new-playground/index.umd.js',
+  css: ''
 }
 
 const staticMAp1 = {
-  js: '/playground/index.umd.js',
-  css: '/playground/style.css'
+  js: '/new-playground/index.umd.js',
+  css: ''
 }
 
 const defaultSchema = `
@@ -142,6 +142,13 @@ export default interface CommonHeaderIProps {
    * @type string
    */
   arrayObjVal?: TestObj[];
+  
+   /**
+   * 直接点击
+   *
+   * @title 点击函数
+   */
+  onClick: (item: number) => void;
 }
 
 // @ts-ignore
@@ -208,10 +215,14 @@ export default() => {
         const res = await loadService.importScript(file.js);
         console.log(res);
         if (!document.querySelector('#playgroundStyle')) {
-          const style = await loadService.importStyle(file.css);
-          console.log(style);
-          style.id='playgroundStyle'
-          document.querySelector('body').appendChild(style);
+          // @ts-ignore
+          if (file.css) {
+            const style = await loadService.importStyle(file.css);
+            console.log(style);
+            style.id='playgroundStyle'
+            document.querySelector('body').appendChild(style);
+          }
+
         }
 
         console.log(window)

@@ -56,14 +56,10 @@
 
 
 ```
- ├── build.json       // 构建产物的文件描述
- ├── cjs.js           // cjs 格式的产物
- ├── es.js            // es 格式的产物
- ├── iife.js          // iife 格式的产物
- ├── index.html       // 主要用于测试预览组件，无实际作用
- ├── mock.json        // 组件的默认配置
- ├── schema.json      // umd 格式的产物
- └── umd.js
+ ├── es               // es 格式的产物
+ ├── umd              // es 格式的产物
+ ├── index.d.ts       // 类型文件
+ └── schema.json      // 物料的 schema 协议
 ```
 
 ### 产物发布
@@ -113,19 +109,17 @@ export default defineConfig({
     lib: {
       libName: "LowcodeTestComponent",
       name: "lowcode-test-component",
-      formats: ['umd', 'es', 'cjs', 'iife'],
-      fileName: format => `${format}.js`,
+      formats: ['umd', 'es'],
+      fileName: (_format) => `{{name}}.production.js`,
       external: {
         react: 'React',
         'react-dom': 'ReactDOM',
       }
     },
     user: {
-      // 平台的用户名
-      userName: '',
-      // 平台秘密码 【注意保密】
-      password: '',
-      // 需要在平台侧创建开发这密钥 【注意保密】
+      // 平台开发者私钥 【注意保密】
+      secretKey: '',
+      // 平台开发者公钥 【注意保密】
       accessKey: ''
     }
   }
@@ -159,11 +153,10 @@ export default defineConfig({
 
 #####  CliUser
 
-| 名称        | 类型     | 必填 | 默认值 | 说明                                   |
-|:----------|:-------|:---|:----|--------------------------------------|
-| userName  | String | 是  | --  | 平台用户名                                |
-| password  | String | 是  | --  | 平台密码                                 |
-| accessKey | String | 是  | --  | 开发者密钥 [密钥申请](/guide/operation/access) |
+| 名称        | 类型     | 必填 | 默认值 | 说明                                    |
+|:----------|:-------|:---|:----|---------------------------------------|
+| accessKey | String | 是  | --  | 开发者公钥 [密钥申请](/guide/operation/access) |
+| secretKey | String | 是  | --  | 开发者私钥 [密钥申请](/guide/operation/access) |
 
 
 ### IProps.d.ts

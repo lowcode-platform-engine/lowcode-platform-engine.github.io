@@ -280,7 +280,6 @@ export const FormSchemaRender = (props: any = {}) => {
   const initialValues  = props.initialValues || {};
   const [form] = Form.useForm();
   const newSchema = formSchema(schema);
-  console.log(newSchema)
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
