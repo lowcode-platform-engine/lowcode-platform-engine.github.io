@@ -2,10 +2,10 @@
 
 ## 底层渲染能力
 
-| 包名                                      | 描述         | 备注 |
-|-----------------------------------------|------------|----|
-| @lowcode-set-up-platform/renderer-core  | 渲染引擎       | -- |
-| @lowcode-set-up-platform/react-renderer | React 渲染引擎 | -- |
+| 包名                                             | 描述        | 备注 |
+|------------------------------------------------|-----------|----|
+| @lowcode-set-up-platform/renderer-core         | 渲染引擎      | -- |
+| @lowcode-set-up-platform/open-react-render-sdk | React 渲染器 | -- |
 
 ## 沙箱
 

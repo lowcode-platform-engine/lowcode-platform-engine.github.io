@@ -111,6 +111,38 @@ import {InputNumber} from "./schemaComponent/InputNumber";
     </Tab>
 </Tabs>
 
+### EventSetter
+
+#### 效果
+
+import {EventComp} from "./schemaComponent/Event";
+
+<EventComp />
+
+#### 示例配置
+
+<Tabs>
+    <Tab label="写法1">
+        ```ts title=IProps.d.ts
+        /**
+        * test-component
+        * @Component TestComponent
+        * @title 点击事件
+        */
+        export default interface TestComponentProps {
+
+            /**
+             * 直接点击
+             *
+             * @title 点击函数
+             */
+            onClick: (item: number) => void;
+    }
+        ```
+    </Tab>
+</Tabs>
+
+
 ### ColorSetter
 
 #### 效果

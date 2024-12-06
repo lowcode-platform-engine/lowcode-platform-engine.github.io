@@ -6,12 +6,12 @@ import './index.scss'
 
 const staticMAp = {
   js: '/setter-render/index.umd.js',
-  css: '/setter-render/style.css'
+  css: ''
 }
 
 const staticMAp1 = {
   js: '/setter-render/index.umd.js',
-  css: '/setter-render/style.css'
+  css: ''
 }
 
 function formSchema(schema: Record<any, any>): any[] {
@@ -81,7 +81,8 @@ function formSchema(schema: Record<any, any>): any[] {
             ...reset,
             formItemProps: {
               ...commonFormItemProps
-            }
+            },
+            setter: 'ColorSetter'
           }
         })
       }
@@ -159,6 +160,21 @@ function formSchema(schema: Record<any, any>): any[] {
             name: key
           },
           setter: 'NumberSetter'
+        }
+      })
+    }
+
+    // 数字类型
+    else if (type === 'function') {
+      resultSchema.push({
+        componentName: "EventSetter",
+        props: {
+          ...reset,
+          formItemProps: {
+            label: title,
+            name: key
+          },
+          setter: 'EventSetter'
         }
       })
     }
@@ -279,7 +295,6 @@ export const FormSchemaRender = (props: any = {}) => {
   const schema  = props.schema || {};
   const initialValues  = props.initialValues || {};
   const [form] = Form.useForm();
-  const newSchema = formSchema(schema);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -292,15 +307,15 @@ export const FormSchemaRender = (props: any = {}) => {
           enableSandbox: true
         })
         const res = await loadService.importScript(file.js);
-        console.log(res);
-        if (!document.querySelector('#setterRenderStyle')) {
+        //console.log(res);
+        /*if (!document.querySelector('#setterRenderStyle')) {
           const style = await loadService.importStyle(file.css);
           console.log(style);
           style.id='setterRenderStyle'
           document.querySelector('body').appendChild(style);
-        }
+        }*/
 
-        console.log(window)
+        //console.log(window)
 
       }catch (e) {
         setError(e)
@@ -312,6 +327,8 @@ export const FormSchemaRender = (props: any = {}) => {
 
   }, []);
 
+  const newSchema = formSchema(schema);
+  console.log(newSchema, initialValues)
 
   const initRender = () => {
     const {ReactDOM, React, SetterRender} = window as any
