@@ -1,33 +1,75 @@
+import {Result} from "antd";
 
-# 渲染器接入—前端
+const ErrorView = () => {
+  return (
+    <div className={'loadingFormContainer'}>
+      <Result
+        status="error"
+        title="渲染异常"
+        subTitle=""
+      />
+    </div>
+  )
+}
 
-## 概述
 
-平台提供了 SDK 版的渲染器，用于 SCHEMA 到视图的渲染；
+const ComponentOne = (_props: any) => {
+  return (
+    <div>
+      这是组件1cccccccccccccccccccccccc
+    </div>
+  )
 
-## 使用
+}
 
-### 安裝
+const Container = (props: any) => {
+  return (
+    <div style={props.style || {}}>
+      {props.children}
+    </div>
+  )
+}
 
-import UseInstall from './component/Use';
+const Header = (props: any) => {
+  return (
+    <div style={props.style || {}}>
+      这是{props.name || 'Header'}
+    </div>
+  )
+}
 
-<UseInstall />
+const Sider = (props: any) => {
+  return (
+    <div style={props.style || {}}>
+      这是{props.name || 'Sider'}
+    </div>
+  )
+}
 
-### 效果
+const Content = (props: any) => {
+  return (
+    <div style={props.style || {}}>
+      这是{props.name || 'Content'}
+    </div>
+  )
+}
 
-通过规范的 Schema 渲染组件或者页面:
+const Footer = (props: any) => {
+  return (
+    <div style={props.style || {}}>
+      这是{props.name || 'Footer'}
+    </div>
+  )
+}
 
-:::details
-
-```json
-{
+const schema = {
   "version": "1.0.2",
   "packagesMap": [],
   "componentsMap": [],
   "componentsTree": [
     {
-      "componentName": "Component",
-      "fileName": "example",
+      componentName: 'Component',
+      fileName: 'example',
       "props": {},
       "children": [
         {
@@ -55,7 +97,7 @@ import UseInstall from './component/Use';
           "name": "container",
           "props": {
             "style": {
-              "display": "flex", "flex-direction": "row"
+              "display": 'flex', "flex-direction": 'row'
             }
           },
           "children": [
@@ -76,7 +118,7 @@ import UseInstall from './component/Use';
                   "max-width": "25%",
                   "min-width": "25%",
                   "width": "25%"
-                }
+                },
               }
             },
             {
@@ -96,8 +138,8 @@ import UseInstall from './component/Use';
                   "flex": "auto"
                 }
               }
-            }
-          ]
+            },
+          ],
 
         },
         {
@@ -117,15 +159,19 @@ import UseInstall from './component/Use';
               "background-color": "rgb(64, 150, 255)"
             }
           }
-        }
+        },
       ]
     }
   ]
 }
-```
-:::
 
-<code src="./component/ExampleRenderView.tsx" />
-
-
-
+export default {
+  schema,
+  ErrorView,
+  ComponentOne,
+  Container,
+  Header,
+  Sider,
+  Content,
+  Footer
+}

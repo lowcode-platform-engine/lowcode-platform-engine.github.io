@@ -8,7 +8,7 @@
 
 ## 设计原理
 
-### 发布流程
+### 预览流程
 
 ![编辑器数据](./images/summary/page-preview.png)
 

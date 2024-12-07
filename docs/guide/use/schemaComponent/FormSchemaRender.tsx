@@ -2,6 +2,7 @@ import {Form, Spin} from "antd";
 import {useEffect, useMemo, useState} from "react";
 import {LoadService} from "../../../utils/LoadService";
 import './index.scss'
+import loader from "../../../utils/loader";
 
 
 const staticMAp = {
@@ -302,11 +303,12 @@ export const FormSchemaRender = (props: any = {}) => {
   useEffect(() => {
     (async () => {
       try {
-        const file = isDEV()? staticMAp: staticMAp1
+        /*const file = isDEV()? staticMAp: staticMAp1
         const loadService = new LoadService({
           enableSandbox: true
         })
-        const res = await loadService.importScript(file.js);
+        const res = await loadService.importScript(file.js);*/
+        await loader.LibSetterRender()
         //console.log(res);
         /*if (!document.querySelector('#setterRenderStyle')) {
           const style = await loadService.importStyle(file.css);
