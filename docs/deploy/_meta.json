@@ -1,0 +1,17 @@
+[
+  "index",
+  {
+    "type": "dir",
+    "name": "server",
+    "label": "服务端",
+    "collapsible": true,
+    "collapsed": false
+  },
+  {
+    "type": "dir",
+    "name": "web",
+    "label": "前端",
+    "collapsible": true,
+    "collapsed": false
+  }
+]

@@ -7,6 +7,9 @@ hero:
     - theme: brand
       text: 快速开始
       link: /guide/
+    - theme: brand
+      text: 私有化部署
+      link: /deploy/  
     - theme: alt
       text: Github
       link: https://github.com/orgs/lowcode-platform-engine/repositories

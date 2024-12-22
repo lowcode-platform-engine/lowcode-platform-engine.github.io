@@ -5,6 +5,11 @@
     "activeMatch": "/guide/"
   },
   {
+    "text": "私有化",
+    "link": "/deploy/",
+    "activeMatch": "/deploy/"
+  },
+  {
     "text": "Schema预览",
     "link": "/schema/",
     "activeMatch": "/schema/"

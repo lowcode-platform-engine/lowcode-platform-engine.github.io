@@ -62,7 +62,7 @@
  └── schema.json      // 物料的 schema 协议
 ```
 
-### 产物发布
+### 物料发布
 
 执行发布命令前，需要校验以下三项：
 
@@ -74,14 +74,21 @@
    
       ![创建物料](../images/meterial/create-metrial.png)
 
-2. 确保是开发者 [密钥申请](/guide/operation/access)，并且 wu-config.ts 中的 user 配置项准确无误。
-3. 确保 package.json 中的 version 和已有版本不会冲突。
+2. 确保 package.json 中的 version 和已有版本不会冲突。
 
 一切准备就绪后执行 发布命令：
 
 ```
 wu upload
 ```
+
+:::tip
+
+首次执行 ``` wu upload ``` 时会执行登录授权的逻辑，控制台会提示自动打开浏览器进行登录授权（如无法自动打开浏览器，则可以手动复制 url 打开）。
+
+:::
+
+
 
 ### 升级线上版本
 
@@ -117,10 +124,9 @@ export default defineConfig({
       }
     },
     user: {
-      // 平台开发者私钥 【注意保密】
-      secretKey: '',
-      // 平台开发者公钥 【注意保密】
-      accessKey: ''
+      // 平台域名，私有化部署时填写私有化部署的域名
+      // host: 'https://static-cdn.ry-ltd.site',
+      host: 'https://static-cdn.ry-ltd.site'
     }
   }
 })
@@ -138,7 +144,7 @@ export default defineConfig({
 |:-----|:-----------------|:---|:---------|-----------------------------------------------|
 | type | ProjectType      | 是  | material | 项目的类型，此时默认为 material，此值还可以是 web、web-component |
 | lib  | ProjectLibConfig | 是  | --       | 物料构建、开发时的配置，创建项目时自动生成，可以自己修改                  |
-| user | CliUser          | 否  | --       | 发布物料时的用户信息配置，1：需要在平台注册成为用户，2：需要创建开发者密钥成为开发者   |
+| user | CliUser          | 否  | --       | 发布物料时的用户信息配置，1：需要在平台注册成为用户，2：首次发布物料需要登录授权     |
 
 
 #####  ProjectLibConfig
@@ -153,10 +159,9 @@ export default defineConfig({
 
 #####  CliUser
 
-| 名称        | 类型     | 必填 | 默认值 | 说明                                    |
-|:----------|:-------|:---|:----|---------------------------------------|
-| accessKey | String | 是  | --  | 开发者公钥 [密钥申请](/guide/operation/access) |
-| secretKey | String | 是  | --  | 开发者私钥 [密钥申请](/guide/operation/access) |
+| 名称   | 类型     | 必填 | 默认值                            | 说明                    |
+|:-----|:-------|:---|:-------------------------------|-----------------------|
+| host | String | 是  | https://static-cdn.ry-ltd.site | 平台域名，私有化部署时填写私有化部署的域名 |
 
 
 ### IProps.d.ts
@@ -164,4 +169,4 @@ export default defineConfig({
 该文件是物料的类型定义文件,物料的 Schema 通过该文件中定义的 TypeScript 类型结合注释来生成，该文件会自动创建，开发者可根据需求自定义组件 Schema。
 
 1. [物料类型定义](/guide/use/Schema定义) 
-2. [TS类型转Schema设计原理](/guide/framework/type-to-ast) 
+2. [TS类型转Schema设计原理](/guide/framework/type-to-ast)
