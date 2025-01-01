@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklowcode_platform_docs=self.webpackChunklowcode_platform_docs||[]).push([["2330"],{9403:function(a,e,c){c.r(e),c.d(e,{default:function(){return n}});var o=c(2676),l=c(1474);let n=()=>(0,o.jsx)(l.PackageManagerTabs,{command:"install"})}}]);
