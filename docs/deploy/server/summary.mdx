@@ -1,0 +1,23 @@
+import Install from "./component/Install";
+
+## 容器化部署
+
+### 镜像构建
+
+1： 下载克隆代码，执行 ```install```
+
+<Install />
+
+2: 构建镜像
+
+```
+docker build -t lowcode-center-server  .
+```
+
+3：docker 启动服务
+
+```
+docker run lowcode-center-server
+```
+
+
