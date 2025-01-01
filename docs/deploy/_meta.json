@@ -13,5 +13,19 @@
     "label": "前端",
     "collapsible": true,
     "collapsed": false
+  },
+  {
+    "type": "dir",
+    "name": "experience",
+    "label": "本地部署",
+    "collapsible": true,
+    "collapsed": false
+  },
+  {
+    "type": "dir",
+    "name": "integration",
+    "label": "一体化部署",
+    "collapsible": true,
+    "collapsed": false
   }
 ]

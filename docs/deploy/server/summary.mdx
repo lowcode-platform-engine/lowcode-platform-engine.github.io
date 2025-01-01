@@ -1,23 +1,228 @@
 import Install from "./component/Install";
+import BuildMin from "./component/Build";
+import Run from "./component/Run";
 
+# 服务部署
 ## 容器化部署
 
 ### 镜像构建
 
-1： 下载克隆代码，执行 ```install```
+1. 下载克隆代码，执行 ```install```
 
 <Install />
 
-2: 构建镜像
+2. 服务构建，执行 ```build:min```
+
+<BuildMin />
+
+3. 构建镜像
 
 ```
 docker build -t lowcode-center-server  .
 ```
 
-3：docker 启动服务
+### 服务启动
+
+1. docker 启动服务（将对应的环境变量修改为真实的值）,容器启动后运行在 10009 端口
 
 ```
-docker run lowcode-center-server
+docker run -d \
+  --name lowcode-center-server \
+  -e MYSQL="127.0.0.1" \
+  -e MYSQL_PORT="3306" \
+  -e MYSQL_USER="root" \
+  -e MYSQL_PASSWORD="password" \
+  -e MYSQL_DATABASE_NAME="b_lowcode_center_database" \
+  -e REDIS="127.0.0.1:6379" \
+  -p 10009:10009 \
+  lowcode-center-server:latest
+
 ```
 
+## pm2
+
+### 服务构建
+
+1. 下载克隆代码，执行 ```install```
+
+<Install />
+
+2. 服务构建，执行 ```build:min```
+
+<BuildMin />
+
+### 环境准备
+
+1. 使用以下命令全局安装 PM2：
+
+<Run command={'install pm2 -g'} />
+
+2. 在项目根目录下创建一个 ecosystem.config.js 文件，并将以下内容添加到文件中
+
+```ts
+module.exports = {
+  apps: [
+    {
+      name: 'lowcode-center-server',
+      script: 'war/index.js',
+      instances: 'max',  // 根据需求设置实例数量
+      exec_mode: 'cluster',
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '1G',
+      env: {
+        NODE_ENV: 'production',
+        MYSQL: "127.0.0.1",
+        MYSQL_PORT: 3306,
+        MYSQL_USER: "root",
+        MYSQL_PASSWORD: "password",
+        MYSQL_DATABASE_NAME: "b_lowcode_center_database",
+        REDIS: "127.0.0.1:6379",
+      },
+    },
+  ],
+};
+```
+
+### 服务启动
+
+1. 执行以下命令，使用 PM2 启动应用程序
+
+```bin
+pm2 start ecosystem.config.js
+```
+
+2. 使用以下命令来查看应用程序的运行状态
+
+```bin
+pm2 status
+```
+
+## K8S 集群
+
+### 镜像构建
+
+1. 如上步骤构建镜像后推送到自己的镜像仓库
+
+### 集群部署
+
+1. 系定义修改 ymal 配置，尤其是 containers.env 必须配置正确
+
+```ymal
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    labels:
+        app: lowcode-center-server
+    name: lowcode-center-server
+    namespace: gpt
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: lowcode-center-server
+    template:
+        metadata:
+            labels:
+                app: lowcode-center-server
+        spec:
+            containers:
+                - env:
+                      - name: APP_NAME
+                        value: "lowcode-center-server"
+                      - name: MYSQL_DATABASE_NAME
+                        value: b_lowcode_center_database
+                      - name: USER_CENTER_SERVER
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: user.server
+                      - name: MYSQL
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: mysql.host
+                      - name: MYSQL_PASSWORD
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: mysql.password
+                      - name: MYSQL_PORT
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: mysql.port
+                      - name: MYSQL_USER
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: mysql.user
+                      - name: REDIS
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: redis.url
+                      - name: REDIS_NAME
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: redis.name
+                      - name: REDIS_POST
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: redis.port
+                      - name: KAfKA
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: kafka.server
+                      - name: NACOS_SERVER_ADDR
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: nacos.server
+                      - name: NACOS_DISCOVERY_NAMESPACE
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: nacos.namespace
+                      - name: NACOS_DISCOVERY_GROUP
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: nacos.group
+                      - name: RABBITMQ
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: rabbitMq.server
+                  image: 替换成自己的镜像地址
+                  imagePullPolicy: IfNotPresent
+                  name: lowcode-center-server
+                  ports:
+                      - containerPort: 10009
+            imagePullSecrets:
+                - name: aliyun-register-pwd
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    labels:
+        app: lowcode-center-server
+    name: lowcode-center-server-service
+    namespace: gpt
+spec:
+    #type: LoadBalancer
+    type: NodePort
+    ports:
+        - name: lowcode-center-server-port
+          port: 10009
+          protocol: TCP
+          targetPort: 10009
+    selector:
+        app: lowcode-center-server
+
+```
 
