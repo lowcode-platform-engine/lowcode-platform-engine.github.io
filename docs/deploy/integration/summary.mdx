@@ -5,5 +5,134 @@ import Run from "./component/Run";
 
 如果不想单独部署三个服务（引擎后端、管理端、编辑器），这里也提供一体化的部署。
 
-###
+## 容器化部署
+
+### 镜像构建
+
+1. 下载克隆代码，执行 bin 目录下的 build.sh 脚本
+
+2. 构建镜像
+
+```
+docker build -t lowcode-integration-platform  .
+```
+
+### 服务启动
+
+1. docker 启动服务（将对应的环境变量修改为真实的值）,容器启动后运行在 10009 端口
+
+```
+docker run -d \
+  --name lowcode-integration-platform \
+  -e MYSQL="127.0.0.1" \
+  -e MYSQL_PORT="3306" \
+  -e MYSQL_USER="root" \
+  -e MYSQL_PASSWORD="password" \
+  -e MYSQL_DATABASE_NAME="b_lowcode_center_database" \
+  -e REDIS="127.0.0.1:6379" \
+  -p 10009:10009 \
+  -p 80:80 \
+  lowcode-integration-platform:latest
+
+```
+
+## K8S 集群
+
+### 镜像构建
+
+1. 如上步骤构建镜像后推送到自己的镜像仓库
+
+### 集群部署
+
+1. 系定义修改 ymal 配置，尤其是 containers.env 必须配置正确
+
+```ymal
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    labels:
+        app: lowcode-integration-platform
+    name: lowcode-integration-platform
+    namespace: gpt
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: lowcode-integration-platform
+    template:
+        metadata:
+            labels:
+                app: lowcode-integration-platform
+        spec:
+            containers:
+                - env:
+                      - name: APP_NAME
+                        value: "lowcode-center-server"
+                      - name: MYSQL_DATABASE_NAME
+                        value: b_lowcode_center_database
+                      - name: MYSQL
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: mysql.host
+                      - name: MYSQL_PASSWORD
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: mysql.password
+                      - name: MYSQL_PORT
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: mysql.port
+                      - name: MYSQL_USER
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: mysql.user
+                      - name: REDIS
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: redis.url
+                      - name: REDIS_NAME
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: redis.name
+                      - name: REDIS_POST
+                        valueFrom:
+                            configMapKeyRef:
+                                name: server-common-cm
+                                key: redis.port
+                  image: 替换成自己的镜像地址
+                  imagePullPolicy: IfNotPresent
+                  name: lowcode-integration-platform
+                  ports:
+                      - containerPort: 10009
+            imagePullSecrets:
+                - name: aliyun-register-pwd
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    labels:
+        app: lowcode-integration-platform
+    name: lowcode-integration-platform-service
+    namespace: gpt
+spec:
+    #type: LoadBalancer
+    type: NodePort
+    ports:
+        - name: lowcode-integration-platform-port
+          port: 10009
+          protocol: TCP
+          targetPort: 10009
+    selector:
+        app: lowcode-integration-platform
+
+```
+
+
 
