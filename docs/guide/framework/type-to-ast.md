@@ -13,7 +13,7 @@
 
 ![ast解析流程](./images/ast/code-ast.png)
 
-[移步体验](/schema){:target="_blank"}
+[移步体验](/schema)
 
 
 ## 设计原理

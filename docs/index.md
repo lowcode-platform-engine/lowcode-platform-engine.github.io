@@ -8,7 +8,7 @@ hero:
       text: 快速开始
       link: /guide/
     - theme: brand
-      text: 私有化部署
+      text: 独立部署
       link: /deploy/  
     - theme: alt
       text: Github
