@@ -1,0 +1,5 @@
+{
+  "OpenReactRenderSdk": "/open-react-render-sdk/index.umd.js",
+  "SetterRender": "/setter-render/index.umd.js",
+  "SchemaOnLinePlayground": "/new-playground/index.umd.js"
+}

@@ -6,6 +6,10 @@
 
 [DEMO](https://static-cdn.ry-ltd.site/lowcode-center-web/#/atomManagement/pageManage/list)
 
+## 演示账号
+
+demo / demo
+
 ## 功能概览
 
 ### 数据管理

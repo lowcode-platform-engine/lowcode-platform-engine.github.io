@@ -1,9 +1,12 @@
+import { OpenReactRenderSdk, SchemaOnLinePlayground, SetterRender} from '../../static-sdk.json'
 interface LoadTypeScriptOptions {
   src?: string; // TypeScript 库的路径，可选，默认为 CDN 地址
   globalKey?: string; // 挂载到 window 上的键名，默认是 "ts"
 }
 
 const typeScriptLoadingCache: { [key: string]: Promise<void> } = {};
+
+console.log(OpenReactRenderSdk, SetterRender, SchemaOnLinePlayground)
 
 function loadLib(options: LoadTypeScriptOptions = {}): Promise<void> {
   const {
@@ -62,9 +65,10 @@ async function LibTypeScript() {
 }
 
 async function LibOpenReactRenderSdk() {
+  console.log(OpenReactRenderSdk, SetterRender, SchemaOnLinePlayground)
   await loadLib({
     // src: 'https://cdn.jsdelivr.net/npm/@lowcode-set-up-platform/open-react-render-sdk@2.1.8/lib/index.umd.js',
-    src: '/open-react-render-sdk/index.umd.js',
+    src: OpenReactRenderSdk || '/open-react-render-sdk/index.umd.js',
     globalKey: 'OpenReactRenderSdk'
   })
   return window['OpenReactRenderSdk'];
@@ -72,17 +76,29 @@ async function LibOpenReactRenderSdk() {
 
 
 async function LibSetterRender() {
+  console.log(OpenReactRenderSdk, SetterRender, SchemaOnLinePlayground)
   await loadLib({
     // src: 'https://cdn.jsdelivr.net/npm/@lowcode-set-up-platform/open-react-render-sdk@2.1.8/lib/index.umd.js',
-    src: '/setter-render/index.umd.js',
+    src: SetterRender || '/setter-render/index.umd.js',
     globalKey: 'SetterRender'
   })
   return window['SetterRender'];
 }
 
+async function LibSchemaOnLinePlayground() {
+  console.log(OpenReactRenderSdk, SetterRender, SchemaOnLinePlayground)
+  await loadLib({
+    // src: 'https://cdn.jsdelivr.net/npm/@lowcode-set-up-platform/open-react-render-sdk@2.1.8/lib/index.umd.js',
+    src: SchemaOnLinePlayground || '/new-playground/index.umd.js',
+    globalKey: 'SchemaOnLinePlayground'
+  })
+  return window['SchemaOnLinePlayground'];
+}
+
 export default {
   LibSetterRender,
-  LibOpenReactRenderSdk
+  LibOpenReactRenderSdk,
+  LibSchemaOnLinePlayground
 }
 
 

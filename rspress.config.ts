@@ -5,12 +5,15 @@ import {pluginPreview} from "@rspress/plugin-preview";
 // import toc from 'rspress-plugin-toc';
 console.log(process.env.NODE_ENV)
 console.log(process.env.VERCEL_ENV)
-const base = process.env.VERCEL_ENV? '/': '/lowcode-platform-docs/'
+let base = '/';
+if (process.env.APPLICATION_CONTAINER === 'DEPLOY_K8S') {
+  base = '/lowcode-platform-docs/'
+}
 // @ts-ignore
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
   title: '低代码搭建引擎',
-  base: '/',
+  base: base,
   description: '低代码搭建引擎',
   icon: '/icon-logo.svg',
   logo: {
@@ -83,7 +86,7 @@ export default defineConfig({
   },
   // 配置 CSS 选择器，自定义要放大的图片，默认为 '.rspress-doc img'
   mediumZoom: {
-    selector: '.lowcode-doc img',
+    selector: '.rspress-doc img',
   },
   plugins: [
     // @ts-ignore

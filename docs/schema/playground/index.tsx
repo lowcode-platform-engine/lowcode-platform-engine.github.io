@@ -1,16 +1,7 @@
 import { Spin } from 'antd';
 import './index.scss'
 import {useEffect, useMemo, useState} from "react";
-import {LoadService} from "../../utils/LoadService";
-const staticMAp = {
-  js: '/new-playground/index.umd.js',
-  css: ''
-}
-
-const staticMAp1 = {
-  js: '/new-playground/index.umd.js',
-  css: ''
-}
+import loader from "../../utils/loader";
 
 const defaultSchema = `
 /**
@@ -196,10 +187,6 @@ interface TestObj {
   date?: string;
 }
 `
-const isDev = true;
-const isDEV = () => {
-  return location.host.includes('localhost') ||  location.host.includes('127.0.0.1')
-}
 export default() => {
 
   const [loading, setLoading] = useState(true);
@@ -208,22 +195,7 @@ export default() => {
   useEffect(() => {
     (async () => {
       try {
-        const file = isDEV()? staticMAp: staticMAp1
-        const loadService = new LoadService({
-          enableSandbox: true
-        })
-        const res = await loadService.importScript(file.js);
-        console.log(res);
-        if (!document.querySelector('#playgroundStyle')) {
-          // @ts-ignore
-          if (file.css) {
-            const style = await loadService.importStyle(file.css);
-            console.log(style);
-            style.id='playgroundStyle'
-            document.querySelector('body').appendChild(style);
-          }
-
-        }
+        await loader.LibSchemaOnLinePlayground()
 
         console.log(window)
 

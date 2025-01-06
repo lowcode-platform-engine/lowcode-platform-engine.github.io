@@ -1,19 +1,7 @@
 import {Form, Spin} from "antd";
 import {useEffect, useMemo, useState} from "react";
-import {LoadService} from "../../../utils/LoadService";
 import './index.scss'
 import loader from "../../../utils/loader";
-
-
-const staticMAp = {
-  js: '/setter-render/index.umd.js',
-  css: ''
-}
-
-const staticMAp1 = {
-  js: '/setter-render/index.umd.js',
-  css: ''
-}
 
 function formSchema(schema: Record<any, any>): any[] {
   // @ts-ignore

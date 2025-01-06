@@ -30,7 +30,6 @@ docker run -d \
   -e MYSQL_PASSWORD="password" \
   -e MYSQL_DATABASE_NAME="b_lowcode_center_database" \
   -e REDIS="127.0.0.1:6379" \
-  -p 10009:10009 \
   -p 80:80 \
   lowcode-integration-platform:latest
 
@@ -126,9 +125,9 @@ spec:
     type: NodePort
     ports:
         - name: lowcode-integration-platform-port
-          port: 10009
+          port: 80
           protocol: TCP
-          targetPort: 10009
+          targetPort: 80
     selector:
         app: lowcode-integration-platform
 

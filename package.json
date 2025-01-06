@@ -7,7 +7,8 @@
     "build": "rspress build",
     "preview": "rspress preview",
     "previewa": "./sss.sh",
-    "build:site": "ts-node-transpile-only ./build/build.ts"
+    "build:site": "ts-node-transpile-only ./build/build.ts",
+    "build:site:application": "ts-node-transpile-only ./build/build_application.ts"
   },
   "dependencies": {
     "@rspress/plugin-preview": "^1.19.1",
