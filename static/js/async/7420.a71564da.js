@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunklowcode_platform_docs=self.webpackChunklowcode_platform_docs||[]).push([["7420"],{1077:function(e,a,o){o.r(a),o.d(a,{default:function(){return l}});var c=o(2676),t=o(1474);let l=()=>(0,c.jsx)(t.PackageManagerTabs,{command:"install @lowcode-set-up-platform/open-react-render-sdk -S"})}}]);
