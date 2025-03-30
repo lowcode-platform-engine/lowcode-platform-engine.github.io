@@ -1,4 +1,4 @@
-import { OpenReactRenderSdk, SchemaOnLinePlayground, SetterRender} from '../../static-sdk.json'
+import { OpenReactRenderSdk, SchemaOnLinePlayground, SetterRender, NexusRenderCore} from '../../static-sdk.json'
 interface LoadTypeScriptOptions {
   src?: string; // TypeScript 库的路径，可选，默认为 CDN 地址
   globalKey?: string; // 挂载到 window 上的键名，默认是 "ts"
@@ -75,6 +75,15 @@ async function LibOpenReactRenderSdk() {
 }
 
 
+async function LibNexusRenderCoreSdk() {
+  await loadLib({
+    // src: 'https://cdn.jsdelivr.net/npm/@lowcode-set-up-platform/open-react-render-sdk@2.1.8/lib/index.umd.js',
+    src: NexusRenderCore || '/nexus-render-core/index.umd.js',
+    globalKey: 'NexusRenderCore'
+  })
+  return window['NexusRenderCore'];
+}
+
 async function LibSetterRender() {
   console.log(OpenReactRenderSdk, SetterRender, SchemaOnLinePlayground)
   await loadLib({
@@ -98,7 +107,8 @@ async function LibSchemaOnLinePlayground() {
 export default {
   LibSetterRender,
   LibOpenReactRenderSdk,
-  LibSchemaOnLinePlayground
+  LibSchemaOnLinePlayground,
+  LibNexusRenderCoreSdk
 }
 
 

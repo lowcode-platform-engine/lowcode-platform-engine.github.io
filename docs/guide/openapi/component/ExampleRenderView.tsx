@@ -19,20 +19,27 @@ export default function App() {
 
   const initRender = () => {
     const {ReactDOM, React} = window as any
-    const { RenderView } = window['OpenReactRenderSdk'];
+    const nexusRenderCore = window['NexusRenderCore'];
+    const { NexusRenderer: RenderView, registerComponent, createAppHelper } = nexusRenderCore;
+
+    for (const key in components) {
+      registerComponent(key, components[key], '1.0.0');
+    }
+
 
     ReactDOM.createRoot(document.getElementById(sdkExampleContainerId)!).render(React.createElement(RenderView, {
-      schema: ExampleCode.schema,
-      components: components,
-      renderKey: '1.0'
+      schema: ExampleCode.schema.componentsTree[0],
+      renderKey: '1.0',
+      appHelper: createAppHelper()
     }))
   }
 
   useEffect(() => {
     (async () => {
       try {
-        await loader.LibOpenReactRenderSdk()
+        await loader.LibNexusRenderCoreSdk()
       }catch (e) {
+        console.log(e)
         setError(e)
       }
       setLoading(false)
@@ -61,11 +68,13 @@ export default function App() {
   if (error) {
     return <ExampleCode.ErrorView />
   }
-  const { RenderView } = window['OpenReactRenderSdk'];
+  const { NexusRenderer } = window['NexusRenderCore'];
 
-  if (!RenderView) {
+  if (!NexusRenderer) {
     return <ExampleCode.ErrorView />
   }
+
+
   return (
     <div id={sdkExampleContainerId} className={'exampleItem'} style={{width: '100%'}} />
   )

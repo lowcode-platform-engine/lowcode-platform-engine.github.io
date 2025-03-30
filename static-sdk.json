@@ -1,5 +1,6 @@
 {
   "OpenReactRenderSdk": "/open-react-render-sdk/index.umd.js",
   "SetterRender": "/setter-render/index.umd.js",
-  "SchemaOnLinePlayground": "/new-playground/index.umd.js"
+  "SchemaOnLinePlayground": "/new-playground/index.umd.js",
+  "NexusRenderCore": "/nexus-render-core/index.umd.js"
 }
