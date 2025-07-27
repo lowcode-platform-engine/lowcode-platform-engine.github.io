@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunklowcode_platform_docs=self.webpackChunklowcode_platform_docs||[]).push([["7420"],{1077:function(e,o,a){a.r(o),a.d(o,{default:function(){return n}});var c=a(2676),l=a(1474);let n=()=>(0,c.jsx)(l.PackageManagerTabs,{command:"install @lowcode-set-up-platform/nexus-render-core -S"})}}]);

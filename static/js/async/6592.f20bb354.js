@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklowcode_platform_docs=self.webpackChunklowcode_platform_docs||[]).push([["6592"],{3281:function(o,c,e){e.r(c),e.d(c,{default:()=>l});var a=e(2676),d=e(7489);let l=o=>(0,a.jsx)(d.SU,{command:o.command})}}]);

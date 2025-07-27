@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklowcode_platform_docs=self.webpackChunklowcode_platform_docs||[]).push([["5023"],{4705:function(o,c,e){e.r(c),e.d(c,{default:()=>s});var l=e(2676),d=e(7489);let s=()=>(0,l.jsx)(d.SU,{command:"run build:min"})}}]);
