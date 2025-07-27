@@ -1,11 +1,10 @@
-# 平台登录
+# 组织及用户
 
-## 登录
+## 注册
 
 进入[登录页面](https://static-cdn.ry-ltd.site/lowcode-center-web/#/login)。
 
-   ![登录表单](../images/operation/login/login.png)
-
+   ![注册表单](../images/operation/register/register.png)
 
 ## 注意
 

@@ -13,7 +13,8 @@ const config = {
 const staticConfig = {
   "OpenReactRenderSdk": "/open-react-render-sdk/index.umd.js",
   "SetterRender": "/setter-render/index.umd.js",
-  "SchemaOnLinePlayground": "/new-playground/index.umd.js"
+  "SchemaOnLinePlayground": "/new-playground/index.umd.js",
+  "NexusRenderCore": "/nexus-render-core/index.umd.js"
 }
 async function main() {
   return new Promise((resolve, reject) =>  {

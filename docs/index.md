@@ -17,13 +17,13 @@ hero:
     src: /icon-logo.svg
     alt: 低代码搭建引擎 Logo
 features:
-  - title: 交付简单化
-    details: 通过拖拽完成页面开发，最大程度复用前端通用能力。
+  - title: 高效搭建业务页面
+    details: 海量模板即开即用，覆盖通用与行业场景，助力快速构建业务应用。
     icon: 🏃🏻‍♀️
-  - title: 开放的物料生态
-    details: 支持 typescript 接口定义物料， 打破传统物料开发模式，降低开发流程壁垒。
+  - title: 基于 Schema 驱动的物料体系
+    details: 统一页面结构与组件协议，构建可复用、可配置的企业级物料生态。
     icon: 📦
-  - title: 沙箱渲染
-    details: 组装、配置物料生成丰富功能，支持多版本组件隔离渲染。
+  - title: 可视化灵活扩展
+    details: 支持区块式编辑与插件增强，满足不同团队个性化开发需求。
     icon: 🎨
 ---

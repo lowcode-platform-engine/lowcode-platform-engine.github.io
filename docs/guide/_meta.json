@@ -4,7 +4,14 @@
   {
     "type": "dir",
     "name": "operation",
-    "label": "操作手册",
+    "label": "租户及账号",
+    "collapsible": true,
+    "collapsed": false
+  },
+  {
+    "type": "dir",
+    "name": "page",
+    "label": "页面搭建",
     "collapsible": true,
     "collapsed": false
   },

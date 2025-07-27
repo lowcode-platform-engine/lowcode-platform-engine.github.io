@@ -1,8 +1,5 @@
 [
   "summary",
-  "canvas",
-  "editor",
-  "sandbox",
   "type-to-ast",
   "preview",
   "publish"
